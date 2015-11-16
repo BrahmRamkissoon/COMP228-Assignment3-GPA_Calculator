@@ -18,9 +18,14 @@ public class GPA_Calculator extends JFrame {
 	JButton calculateButton;
 	JComboBox<String> numOfCoursesCombo;
 	//ArrayList<JTextField> courseCodeTextField;
-	JComboBox<String> creditHoursCombo[] = new JComboBox[6];
-	JComboBox<String> gradeCombo[] = new JComboBox[6];
-
+	JComboBox<String> creditHoursCombo[] = new JComboBox[6]; // ComboBox to hold credit hours
+	JComboBox<String> gradeCombo[] = new JComboBox[6]; 	// ComboBox to hold Letter Grades
+	
+	private static final String[] courses = { "0", "1", "2", "3", "4", "5", "6" };
+	private static final String[] creditHours = {"3", "4", "5"};
+	private static final String[] letterGrade = { "A+ 90-100%", "A 80-89%", "B+ 75-79%", "B 70-74%",
+													"C+ 65-69%", "C 60-64%", "D+ 55-59", "D 50-54%", "F 0-49%"};
+	
 	JLabel creditsLabel, currentGPA_Label, numberOfCoursesLabel, itemNumLabel, courseCodeLabel, creditHoursLabel,
 			gradeLabel, finalGPA_Label;
 
@@ -47,8 +52,7 @@ public class GPA_Calculator extends JFrame {
 		creditsTxtField = new JTextField(4);
 		currentGPA_Label = new JLabel("Current GPA:");
 		currentGPA_TxtField = new JTextField(4);
-		numberOfCoursesLabel = new JLabel("Number of Courses:");
-		String[] courses = { "0", "1", "2", "3", "4", "5", "6" };
+		numberOfCoursesLabel = new JLabel("Number of Courses:");		
 		numOfCoursesCombo = new JComboBox<String>(courses);
 
 		// Top Panel Layout
@@ -132,11 +136,12 @@ public class GPA_Calculator extends JFrame {
 					//Course Number Column
 					coursePanel.add(new JLabel(Integer.toString(i + 1)));
 					
-					// Course Code Column
-					
+					// Course Code Column					
 					coursePanel.add(new JTextField("X"));
-					coursePanel.add(new JLabel("X"));
-					coursePanel.add(new JLabel("X"));
+					// Credit Hours Column
+					coursePanel.add(new JComboBox<String>(creditHours));
+					// Grade Column
+					coursePanel.add(new JComboBox<String>(letterGrade));
 				} // end for
 
 				coursePanel.revalidate(); // refresh layout, better than
